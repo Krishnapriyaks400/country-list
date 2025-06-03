@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2 class="header-title">Where in the world?</h2>
+            <div class="mode-change">Dark mode</div>
+        </div>
+        <div class="countries_wrapper">
+            <div class="countries_wrapper-header">
+                <div class="search">
+                    <input  id="search-input" onkeyup="searchCountries()" type="search" placeholder="Search for a country..." name="search">
+                </div>
+                <div class="filter"></div>
+            </div>
+            <div class="countries_wrapper-list"></div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>

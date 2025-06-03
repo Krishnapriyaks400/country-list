@@ -1,0 +1,258 @@
+h2 {
+  font-family: Nunito Sans;
+}
+.show {
+  display: flex !important;
+}
+.dropdown-content {
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 138px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 12px;
+  display: none;
+  gap: 6px;
+  flex-direction: column;
+  z-index: 17;
+  top: 15%;
+}
+body {
+  background: hsl(0, 0%, 99%);
+  margin: 0;
+}
+
+.countries_wrapper {
+  padding: 0 40px;
+}
+.container {
+  padding-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 8px 40px;
+  align-items: center;
+}
+
+.countries_wrapper-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.countries_wrapper-list {
+  margin: 30px 0;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 60px;
+}
+
+img.country-img {
+  width: 100%;
+  height: 100%;
+}
+.countries {
+  background: #fff;
+  box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 5px 0 rgba(0, 0, 0, 0.19);
+  min-width: 359px;
+}
+
+.country-contents {
+  padding: 10px 16px;
+}
+
+.country-details p {
+  margin: 5px 0;
+}
+
+.country-img-wrapper {
+  width: 100%;
+}
+
+h2.country-title {
+  margin: 2px 0;
+  padding-bottom: 14px;
+}
+input#search-input {
+  width: 500px;
+  height: 48px;
+  box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0px 4px 0 rgba(0, 0, 0, 0.19);
+  background: #fff;
+  border: 0;
+  padding: 20px;
+}
+a.dropdown-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.filterContainer {
+  /* margin-left: 10px; */
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+button.dropbtn {
+  min-width: 160px;
+  background: #fff;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  border: none;
+  height: 38px;
+  text-align: start;
+  padding-left: 8px;
+}
+
+a.dropdown-items {
+  text-decoration: none;
+  color: #000;
+}
+
+a.backBtn {
+  text-decoration: none;
+  width: 70px;
+  padding: 5px;
+  box-shadow: 0px 1px 4px 0px #8d8d8d;
+  color: #000;
+  text-align: center;
+}
+
+.countries_detailes_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 0 40px;
+}
+
+.countryinfo {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+}
+
+.country-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.country-details_footer {
+  margin-top: 55px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+button.country-details-borders {
+  width: 85px;
+  padding: 5px;
+  box-shadow: 0px 0px 2px 0px #aba4a4;
+  color: #000;
+  text-align: center;
+  background: #fff;
+  border: none;
+  gap: 10px;
+  /* display: flex; */
+}
+@media (max-width: 750px) {
+  .header {
+    box-shadow: 0 -3px 2px 0 rgba(0, 0, 0, 0.2), 0 0px 4px 0 rgba(0, 0, 0, 0.19);
+    padding: 25px 18px;
+    /* background: hsl(209, 23%, 22%); */
+  }
+  h2.header-title {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .mode-change {
+    font-size: 14px;
+  }
+  .countries_wrapper {
+    padding: 0px 18px;
+  }
+  .countries_wrapper-header {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  input#search-input {
+    width: 100%;
+  }
+  button.dropbtn {
+    width: 176px;
+    height: 44px;
+  }
+  .country-contents {
+    padding: 10px 30px;
+  }
+  .countries_detailes_wrapper {
+    padding: 0px 30px;
+    gap: unset;
+  }
+  img.countryinfo-img {
+    width: 100%;
+  }
+  .countryinfo-img-wrapper {
+    margin: 45px 0;
+  }
+  .countryinfo {
+    grid-template-columns: unset;
+  }
+  /* .country-details {
+      gap: 30px;
+    } */
+  .country-details_footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: unset;
+    margin-top: 20px;
+  }
+}
+/* dark */
+body.dark {
+  background: hsl(207, 26%, 17%);
+}
+.dark .container {
+  background: hsl(207, 26%, 17%);
+}
+.dark .header {
+  background: hsl(209, 23%, 22%);
+}
+.dark p,
+.dark h2,
+.dark strong {
+  color: #fff;
+}
+.dark input#search-input {
+  background: hsl(209, 23%, 22%);
+}
+
+.dark button.dropbtn {
+  background: hsl(209, 23%, 22%);
+  color: #fff;
+}
+/* .dark .country-contents {
+    background: hsl(209, 23%, 22%);
+  } */
+.dark .countries {
+  background: hsl(209, 23%, 22%);
+}
+.dark #search-input::placeholder {
+  color: #fff;
+}
+.dark a.backBtn {
+  color: #fff;
+}
+.dark .dropdown-content {
+  background: hsl(209, 23%, 22%);
+}
+.dark a.dropdown-items {
+  color: #fff;
+}
+.dark button.country-details-borders {
+  background: hsl(209, 23%, 22%);
+  color: #fff;
+}

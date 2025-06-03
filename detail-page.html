@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2 class="header-title">Where in the world?</h2>
+            <div class="mode-change">Dark mode</div>
+        </div>
+        <div class="countries_detailes_wrapper">
+            <a href="/design/index.html" class="backBtn">Back</a>
+         <div class="countries_detailes"></div>
+        </div>
+    </div>
+    <script>
+        countryName = JSON.parse(localStorage.getItem("countryName")) || [];
+        countriesList  = JSON.parse(localStorage.getItem("countriesList")) || [];
+         console.log("countryName", countryName,countriesList);
+
+        const selectedItemDetail = countriesList.filter((c)=>c.name === countryName);
+        console.log("selectedItemDetail", selectedItemDetail);
+         
+           const detailsContainer = document.querySelector(".countries_detailes");
+         
+           selectedItemDetail?.forEach((selectedItemDetail) => {
+            const details = document.createElement("div");
+            details.className = "countryinfo";
+            details.innerHTML = `
+               
+            <div class="countryinfo-img-wrapper">
+                <img class="countryinfo-img" src="${selectedItemDetail.flag}" width="600px">
+            </div>
+            <div class="countryinfo-contents">
+
+                 <h2 class="country-title">${selectedItemDetail.name}</h2>
+                    <div class="country-details">
+                        <div class="country-details-left">
+                    <p><strong>Native name:</strong> ${selectedItemDetail.nativeName}</p>
+                    <p><strong>Population:</strong> ${selectedItemDetail.population}</p>
+                    <p><strong>Region:</strong> ${selectedItemDetail.region}</p>
+                    <p><strong>Sub Region:</strong> ${selectedItemDetail.subregion}</p>
+                    <p><strong>Capital:</strong> ${selectedItemDetail.capital}</p>
+                        </div>
+                      <div class="country-details-right">
+                    <p><strong>TopLevel Domain:</strong> ${selectedItemDetail.topLevelDomain}</p>
+                    <p><strong>currencies:</strong> 
+                           ${selectedItemDetail.currencies.map((currency) => `${currency.code}`) .join("")}
+                              </p>
+                    <p><strong>languages:</strong> 
+                         ${selectedItemDetail.languages.map((lang) =>`${lang.name}`) .join(",")}
+                         </p>
+                      </div>
+                    </div>
+                <div class="country-details_footer">
+                    <h2 class="border-countries">Border countries</h2>
+                    <div class="border-countries-items">
+                         ${selectedItemDetail.borders?.map((borders) =>` <button class="country-details-borders">${borders}</button>` ).join("")}
+                       </div>
+                    </div>
+            </div>`;
+            detailsContainer.appendChild(details);
+        });
+            
+ 
+        
+    </script>
+</body>
+<script src="script.js"></script>
+</html>
