@@ -2,7 +2,7 @@ let countriesList = [];
 const container = document.querySelector(".container");
 const modeBtn = document.querySelector(".mode-change");
 const body = document.querySelector("body");
-
+let regionattribute = "";
 document.addEventListener("DOMContentLoaded", function () {
   getCountries();
 });
@@ -26,6 +26,7 @@ async function getCountries() {
 }
 
 function showCountries(list) {
+  console.log("list", list);
   const listContainer = document.querySelector(".countries_wrapper-list");
   if (!listContainer) return;
   listContainer.innerHTML = "";
@@ -82,7 +83,7 @@ container?.addEventListener("click", function (event) {
   const target = event.target;
 
   if (target.classList.contains("dropdown-items")) {
-    const regionattribute = target.getAttribute("data-region");
+    regionattribute = target.getAttribute("data-region");
     showFilterItems(regionattribute);
   }
 
@@ -98,9 +99,11 @@ container?.addEventListener("click", function (event) {
 });
 
 function showFilterItems(regionattribute) {
+  const dropBtn = document.querySelector(".dropbtn");
   const filteredCountries = countriesList.filter(
     (item) => item.region === regionattribute
   );
+  dropBtn.textContent = "Filter by " + regionattribute;
   showCountries(filteredCountries);
 }
 
@@ -108,17 +111,31 @@ function searchCountries() {
   const input = document.getElementById("search-input");
   const filterValue = input?.value.trim().toLowerCase();
   console.log("input", filterValue);
-  const filteredBySearch = countriesList.filter((country) =>
-    country.name.toLowerCase().includes(filterValue)
-  );
-  console.log("inputsearch", filteredBySearch);
-  showCountries(filteredBySearch);
+  if (regionattribute !== "") {
+    const searchFilteredCountries = countriesList.filter(
+      (item) => item.region === regionattribute
+    );
+
+    const filterWithSearch = searchFilteredCountries.filter((country) =>
+      country.name.toLowerCase().includes(filterValue)
+    );
+    console.log("inputsearch", filterWithSearch);
+    showCountries(filterWithSearch);
+  } else {
+    const filteredBySearch = countriesList.filter((country) =>
+      country.name.toLowerCase().includes(filterValue)
+    );
+    console.log("inputsearch", filteredBySearch);
+    showCountries(filteredBySearch);
+  }
 }
 
 function showDetailedCountry(countryName) {
   console.log("countryName", countryName);
-  localStorage.setItem("countryName", JSON.stringify(countryName));
-  window.location.href = "/detail-page.html";
+  //localStorage.setItem("countryName", JSON.stringify(countryName));
+  window.location.href = `/detail-page.html?country=${encodeURIComponent(
+    countryName
+  )}`;
 }
 
 modeBtn?.addEventListener("click", () => {

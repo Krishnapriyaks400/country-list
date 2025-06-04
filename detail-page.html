@@ -18,8 +18,10 @@
         </div>
     </div>
     <script>
-        countryName = JSON.parse(localStorage.getItem("countryName")) || [];
+        // countryName = JSON.parse(localStorage.getItem("countryName")) || [];
         countriesList  = JSON.parse(localStorage.getItem("countriesList")) || [];
+        const urlParams = new URLSearchParams(window.location.search);
+        const countryName = urlParams.get("country");
          console.log("countryName", countryName,countriesList);
 
         const selectedItemDetail = countriesList.filter((c)=>c.name === countryName);
@@ -30,6 +32,12 @@
            selectedItemDetail?.forEach((selectedItemDetail) => {
             const details = document.createElement("div");
             details.className = "countryinfo";
+            const bordersHTML = selectedItemDetail.borders?.length
+      ? `<div class="border-countries-items">
+          ${selectedItemDetail.borders.map((border) => `<button class="country-details-borders">${border}</button>`).join("")}
+         </div>`
+      : `<div class="border-countries-items">No borders</div>`;
+
             details.innerHTML = `
                
             <div class="countryinfo-img-wrapper">
@@ -58,10 +66,8 @@
                     </div>
                 <div class="country-details_footer">
                     <h2 class="border-countries">Border countries</h2>
-                    <div class="border-countries-items">
-                         ${selectedItemDetail.borders?.map((borders) =>` <button class="country-details-borders">${borders}</button>` ).join("")}
-                       </div>
-                    </div>
+                  ${bordersHTML}
+                   </div>
             </div>`;
             detailsContainer.appendChild(details);
         });
